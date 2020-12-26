@@ -853,28 +853,26 @@ imageRun = ImageTk.PhotoImage(file="runner1_colorchange.png")
 RunLbl = tk.Label(FirstFrame, image = imageRun, bg="#fbf1e9")
 RunLbl.grid(column=4, row=0, sticky = tk.W)
 
-MainTitleLbl = tk.Label(FirstFrame, text="我就健！")
-MainTitleLbl.pack()
-
 BMIappBtn = tk.Button(FirstFrame,
                       text="看看你多健!\nBMI與每日應攝取熱量計算",
                       height=5,
-                      width=20,
+                      width=20, bg = "#f8872e", fg='white',
                       command=lambda: BMIapp(SecondFrame))
-BMIappBtn.pack()
+BMIappBtn.grid(column=1, row=1, pady=15, columnspan= 5, padx = 340)
 
 FOODappBtn = tk.Button(FirstFrame,
                        text="吃得健不健？\n常見食物熱量表",
                        height=5,
-                       width=20,
+                       width=20, bg = '#f8872e', fg='white',
                        command=lambda: FOODapp(FourthFrame))
-FOODappBtn.pack()
+FOODappBtn.grid(column=1, row=2, pady=15, columnspan= 5, padx = 340)
 
 WORKOUTappBtn = tk.Button(FirstFrame,
                           text="今天好想健！\n居家運動推薦",
                           height=5,
-                          width=20,
+                          width=20,  bg = "#f8872e", fg='white',
                           command=lambda: WORKOUTapp(SixthFrame))
-WORKOUTappBtn.pack()
+
+WORKOUTappBtn.grid(column=1, row=3, pady=15, columnspan= 5, padx = 340)
 
 MainWin.mainloop()
