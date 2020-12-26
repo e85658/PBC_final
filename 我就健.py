@@ -591,14 +591,14 @@ def WORKOUTapp(frame):
     
     '''----------------------今天好想健title---------------------------'''
     labelTitle3 = tk.Label(SixthFrame, text = "今天好想健！", font=('Helvetica', 25), bg="#fbf1e9", fg='#f8872e')
-    labelTitle3.grid(column=0, row=1)
+    labelTitle3.grid(column=0, row=1, ipady=20)
 
 
     '''----------------------肌群的下拉式選單---------------------------'''
     global BodyParts
     labelBodyParts = tk.Label(SixthFrame,
                         text = "選擇想健的部位", fg='#f8872e', bg="#fbf1e9")
-    labelBodyParts.grid(column=0, row=2)  # 肌群label的位置
+    labelBodyParts.grid(column=0, row=2, ipady=5)  # 肌群label的位置
 
     BodyParts = ttk.Combobox(SixthFrame,
                                 values=[
@@ -619,7 +619,7 @@ def WORKOUTapp(frame):
     '''---------------------運動強度的下拉式選單--------------------------'''
     global Intensity
     LabelIntensity = tk.Label(SixthFrame, text="選擇想健的強度", fg='#f8872e', bg="#fbf1e9")
-    LabelIntensity.grid(column=0, row=5)  # 運動強度label的位置
+    LabelIntensity.grid(column=0, row=5, ipady=5)  # 運動強度label的位置
 
     Intensity = ttk.Combobox(SixthFrame,
                                 values=[
@@ -683,23 +683,23 @@ def Menu(frame):
     RecommendedExercise = random.sample(Exercise, k=4)  # 隨機的演算法算出四個運動
     
     LabelMenu = Label(frame, text='這樣動最健！', font=('Helvetica', 25), bg="#fbf1e9", fg='#f8872e')  # 隨機菜單名稱
-    LabelMenu.grid(column=0, row=3)
+    LabelMenu.grid(column=0, row=3, ipady=20)
     
     WorkoutTips = Label(frame, 
                         text='每個動作做一分鐘，一個動作做兩組，\n 組間休息15秒，總共加起來就是10分鐘嘍！', fg='#f8872e', bg="#fbf1e9")
-    WorkoutTips.grid(column=0, row=4)
+    WorkoutTips.grid(column=0, row=4, ipady=5)
     
     FirstButton = tk.Button(frame, text = str(RecommendedExercise[0]), command=lambda :PlayGif(0))
-    FirstButton.grid(column=0, row=6)  # 第一個動作的button
+    FirstButton.grid(column=0, row=6, ipady=5)  # 第一個動作的button
 
     SecondButton = tk.Button(frame, text = str(RecommendedExercise[1]), command=lambda :PlayGif(1))
-    SecondButton.grid(column=0, row=8)  # 第二個動作的button
+    SecondButton.grid(column=0, row=8, ipady=5)  # 第二個動作的button
     
     ThirdButton = tk.Button(frame, text = str(RecommendedExercise[2]), command=lambda :PlayGif(2))
-    ThirdButton.grid(column=0, row=10)  # 第三個動作的button
+    ThirdButton.grid(column=0, row=10, ipady=5)  # 第三個動作的button
     
     FourthButton = tk.Button(frame, text = str(RecommendedExercise[3]), command=lambda :PlayGif(3))
-    FourthButton.grid(column=0, row=12)  # 第四個動作的button
+    FourthButton.grid(column=0, row=12, ipady=5)  # 第四個動作的button
 
 
 RecommendedExercise = []
