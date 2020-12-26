@@ -20,9 +20,11 @@ MainWin.title("我就健")
 
 SeventhFrame = Frame(MainWin)  # 今天好想健結果頁
 SeventhFrame.place(width=850, height=700)
+SeventhFrame["bg"] = "#fbf1e9"
 
 SixthFrame = Frame(MainWin)  # 今天好想健首頁
 SixthFrame.place(width=850, height=700)
+SixthFrame["bg"] = "#fbf1e9"
 
 FifthFrame = Frame(MainWin)  # 吃得健不健結果頁
 FifthFrame.place(width=850, height=700)
@@ -430,10 +432,10 @@ FoodImage = {"早點": imageOmelette1, "中式": imageRice1,
 #             "速食": '速食.xlsx', "義式": '義式.xlsx',
 #             "日式": '日式.xlsx', "水果": '水果.xlsx',
 #             "甜點": '點心.xlsx', "飲料": '飲料.xlsx'}
-FoodList = {"早點": '早點.xls', "中式": '中式.xls',
-            "速食": '速食.xls', "義式": '義式.xls',
-            "日式": '日式.xls', "水果": '水果.xls',
-            "甜點": '點心.xls', "飲料": '飲料.xls'}
+FoodList = {"早點": '/Users/kaipingwang/Desktop/GitHub/PBC_final/早點.xls', "中式": '/Users/kaipingwang/Desktop/GitHub/PBC_final/中式.xls',
+            "速食": '/Users/kaipingwang/Desktop/GitHub/PBC_final/速食.xls', "義式": '/Users/kaipingwang/Desktop/GitHub/PBC_final/義式.xls',
+            "日式": '/Users/kaipingwang/Desktop/GitHub/PBC_final/日式.xls', "水果": '/Users/kaipingwang/Desktop/GitHub/PBC_final/水果.xls',
+            "甜點": '/Users/kaipingwang/Desktop/GitHub/PBC_final/點心.xls', "飲料": '/Users/kaipingwang/Desktop/GitHub/PBC_final/飲料.xls'}
 
 
 '''--------------------------- 主頁面(FourthFrame)設定 ----------------------------'''
@@ -583,19 +585,19 @@ Intensity = None
 def WORKOUTapp(frame):
     frame.tkraise()
     
-    BackButton = tk.Button(frame, text="←",
+    BackButton = tk.Button(frame, text="←", width=5, height=1,
                         command=lambda: SwitchFrame(SixthFrame, FirstFrame))
     BackButton.grid(column=0, row=0, sticky='WS')  # 回到上一頁的button
     
     '''----------------------今天好想健title---------------------------'''
-    labelTitle3 = tk.Label(SixthFrame, text = "今天好想健！")
+    labelTitle3 = tk.Label(SixthFrame, text = "今天好想健！", font=('Helvetica', 25), bg="#fbf1e9", fg='#f8872e')
     labelTitle3.grid(column=0, row=1)
 
 
     '''----------------------肌群的下拉式選單---------------------------'''
     global BodyParts
     labelBodyParts = tk.Label(SixthFrame,
-                        text = "選擇想健的部位")
+                        text = "選擇想健的部位", fg='#f8872e', bg="#fbf1e9")
     labelBodyParts.grid(column=0, row=2)  # 肌群label的位置
 
     BodyParts = ttk.Combobox(SixthFrame,
@@ -616,7 +618,7 @@ def WORKOUTapp(frame):
 
     '''---------------------運動強度的下拉式選單--------------------------'''
     global Intensity
-    LabelIntensity = tk.Label(SixthFrame, text="選擇想健的強度")
+    LabelIntensity = tk.Label(SixthFrame, text="選擇想健的強度", fg='#f8872e', bg="#fbf1e9")
     LabelIntensity.grid(column=0, row=5)  # 運動強度label的位置
 
     Intensity = ttk.Combobox(SixthFrame,
@@ -632,21 +634,21 @@ def WORKOUTapp(frame):
     # print(Intensity.current(), Intensity.get())  # 只是看看初始的強度是哪一個
 
     '''--------------------使用者輸入完畢後的button-------------------------'''
-    ButtonStart1 = tk.Button(SixthFrame, text="健起來!", command=lambda: Menu(SeventhFrame))
-    ButtonStart1.grid(column=0, row=8)
+    ButtonStart1 = tk.Button(SixthFrame, text="健起來!", bg='#f8872e', fg="black", bd=3, command=lambda: Menu(SeventhFrame))
+    ButtonStart1.grid(column=0, row=8, columnspan=2, padx=5, pady=30, ipady=5, sticky="ew")
 
     # print(dict(ButtonStart1))  # 可以看想要改什麼東西（字體、大小、顏色之類的）
 
 '''--------------------讀取包含所有健身動作的excel----------------------'''
 # loc = "C:\\Users\\IVA\\Desktop\\exercise.xlsx"  # PATHPATH
-loc = 'exercise.xls'
+loc = '/Users/kaipingwang/Desktop/GitHub/PBC_final/exercise.xls'
 AllExercise = xlrd.open_workbook(loc)  # 開啟excel檔案
 SheetIndex = {'強': 0, '中': 1, '弱': 2}
 ColIndex = {'腿部': 0, '胸部': 1, '背部': 2, '腹部': 3, '肩部': 4, '手部': 5, '全身': 6}
 
 '''--------------------讀取語錄txt----------------------'''
 # with open('C:\\Users\\IVA\\Desktop\\語錄們.txt', 'r', encoding='UTF-8') as file:  # PATHPATH
-with open('語錄們.txt', 'r', encoding='UTF-8') as file:  # 將語錄放進lines清單中
+with open('/Users/kaipingwang/Desktop/GitHub/PBC_final/語錄們.txt', 'r', encoding='UTF-8') as file:  # 將語錄放進lines清單中
     lines = []
     for line in file:  # 把語錄放入list中
         line = line.strip('\n')
@@ -665,11 +667,11 @@ def Menu(frame):
     frame.tkraise()  # 開啟新frame（即SecondFrame）
 
     # 回到上一頁的button
-    BackButton = tk.Button(frame, text="←", command=lambda: SwitchFrame(SeventhFrame, SixthFrame))
+    BackButton = tk.Button(frame, text="←", width=5, height=1, command=lambda: SwitchFrame(SeventhFrame, SixthFrame))
     BackButton.grid(column=0, row=0, sticky='WS')
 
     # 回到首頁的button
-    HomeButton = tk.Button(frame, text="⌂", command=lambda: SwitchFrame(SeventhFrame, FirstFrame))
+    HomeButton = tk.Button(frame, text="⌂", width=5, height=1, command=lambda: SwitchFrame(SeventhFrame, FirstFrame))
     HomeButton.grid(column=1, row=0, sticky='WS')
     
     TargetPart = BodyParts.get()  # 使用者選擇的肌群
@@ -680,11 +682,11 @@ def Menu(frame):
     Exercise = Exercise[1:]  # 去掉第一行的header
     RecommendedExercise = random.sample(Exercise, k=4)  # 隨機的演算法算出四個運動
     
-    LabelMenu = Label(frame, text='這樣動最健！')  # 隨機菜單名稱
+    LabelMenu = Label(frame, text='這樣動最健！', font=('Helvetica', 25), bg="#fbf1e9", fg='#f8872e')  # 隨機菜單名稱
     LabelMenu.grid(column=0, row=3)
     
     WorkoutTips = Label(frame, 
-                        text='每個動作做一分鐘，一個動作做兩組，\n 組間休息15秒，總共加起來就是10分鐘嘍！')
+                        text='每個動作做一分鐘，一個動作做兩組，\n 組間休息15秒，總共加起來就是10分鐘嘍！', fg='#f8872e', bg="#fbf1e9")
     WorkoutTips.grid(column=0, row=4)
     
     FirstButton = tk.Button(frame, text = str(RecommendedExercise[0]), command=lambda :PlayGif(0))
@@ -717,12 +719,13 @@ def PlayGif(i):
     GifWin = tk.Toplevel(MainWin)  # 打開新的視窗
     GifWin.geometry('1000x600')
     GifWin.title(str(RecommendedExercise[i]))
+    GifWin["bg"] = "#fbf1e9"
 
     '''----------------------開始倒數計時-------------------------'''
     labelvariable = StringVar()
     labelvariable.set("01:00")  # 螢幕顯示起始時間
 
-    countdown = tk.Label(GifWin, textvariable = labelvariable,font=('Helvetica',50))  # 顯示時間的label
+    countdown = tk.Label(GifWin, textvariable = labelvariable,font=('Helvetica',50), bg="#fbf1e9")  # 顯示時間的label
     countdown.pack()
     
     global paused  # 從global叫出暫停
@@ -735,7 +738,7 @@ def PlayGif(i):
         paused = True
 
     '''----------------------gif的圖片切分-------------------------'''
-    # GifFile = 'C:\\\\Users\\\\IVA\\\\Desktop\\\\gif\\\\'  # PATHPATH
+    GifFile = '/Users/kaipingwang/Desktop/GitHub/PBC_final'  # PATHPATH
     GifFile = RecommendedExercise[i]
     GifFile += '.gif'
     # GifFile = RecommendedExercise[i] + '.gif'
@@ -746,7 +749,7 @@ def PlayGif(i):
     gif_label = tk.Label(GifWin, image=im[0])
     gif_label.pack()
     
-    quote = tk.Label(GifWin, text='預備備......開始！')
+    quote = tk.Label(GifWin, text='預備備......開始！', bg="#fbf1e9")
     quote.pack()
 
     quo = None
@@ -832,11 +835,11 @@ def PlayGif(i):
 
     '''----------------------所有按鈕的建置-------------------------'''
     # Start Button
-    start = tk.Button(GifWin, text='▶', command=lambda: StartEverything(count))
+    start = tk.Button(GifWin, text='▶', width=10, height=2, command=lambda: StartEverything(count))
     start.pack()
     
     # Stop Button
-    stop = tk.Button(GifWin, text='| |', command=lambda: StopEverything())
+    stop = tk.Button(GifWin, text='| |', width=10, height=2, command=lambda: StopEverything())
     stop.pack()
 
 
