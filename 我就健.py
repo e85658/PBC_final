@@ -844,6 +844,15 @@ def PlayGif(i):
 
 
 #————————————————————————-———————————首頁設計————————————————————————————————————————————
+f1 = tkFont.Font(size=40, family="Helvetica")
+
+MainTitleLbl = tk.Label(FirstFrame, text="我就健！", font = f1, bg="#fbf1e9", fg='#f8872e')
+MainTitleLbl.grid(column=1, row=0, columnspan= 5, padx = 340)
+
+imageRun = ImageTk.PhotoImage(file="runner1_colorchange.png")
+RunLbl = tk.Label(FirstFrame, image = imageRun, bg="#fbf1e9")
+RunLbl.grid(column=4, row=0, sticky = tk.W)
+
 MainTitleLbl = tk.Label(FirstFrame, text="我就健！")
 MainTitleLbl.pack()
 
