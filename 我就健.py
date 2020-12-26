@@ -42,8 +42,8 @@ SecondFrame = Frame(MainWin)  # 看看你多健首頁
 SecondFrame.place(width=850, height=700)
 SecondFrame["bg"] = "#fbf1e9"
 
-FirstFrame = Frame(MainWin)  # 首頁的frame
-FirstFrame.place(width=400, height=600)
+FirstFrame = Frame(MainWin, bg="#fbf1e9")  # 首頁的frame
+FirstFrame.place(width=850, height=700)
 
 #＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝看看你多健＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝#
 '''------------------- 看看你多健的基本資訊頁視窗（SecondFrame） ------------------'''
@@ -413,14 +413,23 @@ lb_height = 25
 
 '''-------------------------------- 導入圖庫以及清單 -----------------------------------'''
 # 這邊要改路徑！！！！ PATHPATH
-imageOmelette1 = ImageTk.PhotoImage(file="omelette.png")
-imageRice1 = ImageTk.PhotoImage(file="rice.png")
-imageFastfood1 = ImageTk.PhotoImage(file="fastfood.png")
-imagePasta1 = ImageTk.PhotoImage(file="pasta.png")
-imageNoodles1 = ImageTk.PhotoImage(file="noodles.png")
-imageFruits1 = ImageTk.PhotoImage(file="fruits.png")
-imageCake1 = ImageTk.PhotoImage(file="cake.png")
-imageDrink1 = ImageTk.PhotoImage(file="drink.png")
+imageOmelette1 = ImageTk.PhotoImage(file="omelette_colorchange.png")
+imageRice1 = ImageTk.PhotoImage(file="rice_colorchange.png")
+imageFastfood1 = ImageTk.PhotoImage(file="fastfood_colorchange.png")
+imagePasta1 = ImageTk.PhotoImage(file="pasta_colorchange.png")
+imageNoodles1 = ImageTk.PhotoImage(file="noodles_colorchange.png")
+imageFruits1 = ImageTk.PhotoImage(file="fruits_colorchange.png")
+imageCake1 = ImageTk.PhotoImage(file="cake_colorchange.png")
+imageDrink1 = ImageTk.PhotoImage(file="drink_colorchange.png")
+
+imageOmelette = ImageTk.PhotoImage(file = "早點1.png")
+imageRice = ImageTk.PhotoImage(file = "中式1.png")
+imageFastfood = ImageTk.PhotoImage(file = "速食1.png")
+imagePasta = ImageTk.PhotoImage(file = "義式1.png")
+imageNoodles = ImageTk.PhotoImage(file = "日式1.png")
+imageFruits = ImageTk.PhotoImage(file = "水果1.png")
+imageCake = ImageTk.PhotoImage(file = "點心1.png")
+imageDrink = ImageTk.PhotoImage(file = "飲品1.png")
 
 FoodImage = {"早點": imageOmelette1, "中式": imageRice1,
              "速食": imageFastfood1, "義式": imagePasta1,
@@ -432,16 +441,24 @@ FoodImage = {"早點": imageOmelette1, "中式": imageRice1,
 #             "速食": '速食.xlsx', "義式": '義式.xlsx',
 #             "日式": '日式.xlsx', "水果": '水果.xlsx',
 #             "甜點": '點心.xlsx', "飲料": '飲料.xlsx'}
-FoodList = {"早點": '/Users/kaipingwang/Desktop/GitHub/PBC_final/早點.xls', "中式": '/Users/kaipingwang/Desktop/GitHub/PBC_final/中式.xls',
-            "速食": '/Users/kaipingwang/Desktop/GitHub/PBC_final/速食.xls', "義式": '/Users/kaipingwang/Desktop/GitHub/PBC_final/義式.xls',
-            "日式": '/Users/kaipingwang/Desktop/GitHub/PBC_final/日式.xls', "水果": '/Users/kaipingwang/Desktop/GitHub/PBC_final/水果.xls',
-            "甜點": '/Users/kaipingwang/Desktop/GitHub/PBC_final/點心.xls', "飲料": '/Users/kaipingwang/Desktop/GitHub/PBC_final/飲料.xls'}
+FoodList = {"早點": '早點.xls', "中式": '中式.xls',
+            "速食": '速食.xls', "義式": '義式.xls',
+            "日式": '日式.xls', "水果": '水果.xls',
+            "甜點": '點心.xls', "飲料": '飲料.xls'}
 
 
 '''--------------------------- 主頁面(FourthFrame)設定 ----------------------------'''
 
 
 def FOODapp(frame):
+    global imageOmelette
+    global imageRice
+    global imageFastfood
+    global imagePasta
+    global imageNoodles
+    global imageFruits
+    global imageCake
+    global imageDrink
     frame.tkraise()
 
     BackButton = tk.Button(frame, text="←", command=lambda: SwitchFrame(FourthFrame, FirstFrame))
@@ -452,7 +469,7 @@ def FOODapp(frame):
     f2 = tkFont.Font(size=15, family="Helvetica")
 
     # 標題
-    lalNun1 = tk.Label(FourthFrame, text="吃得健不健？", font='f1', bg="#fbf1e9", fg='#f8872e')
+    lalNun1 = tk.Label(frame, text="吃得健不健？", font=f1, bg="#fbf1e9", fg='#f8872e')
     lalNun1.grid(column=0, row=1, columnspan=4, padx=300, pady=10, sticky=tk.NE + tk.SW)
 
     # imageSearch = ImageTk.PhotoImage(file = "search1.png")
@@ -463,48 +480,40 @@ def FOODapp(frame):
     # lalNun2.grid(column = 0,row = 1, padx= 300, sticky = tk.NW)
 
     # 個類別按鈕
-    btnNumA = tk.Label(FourthFrame)
+    btnNumA = tk.Label(frame)
     btnNumA.grid(column=0, row=3)
 
     # PATHPATH 536-574
-    # imageOmelette = ImageTk.PhotoImage(file = "早點1.png")
     # 把 text='Breafast' 用 image = imageOmelette 取代
-    btnNum1 = tk.Button(FourthFrame, text='Breakfast', command=lambda: FoodCalories("早點"))
+    btnNum1 = tk.Button(FourthFrame, text = "Breakfast", image = imageOmelette, command=lambda: FoodCalories("早點"))
     btnNum1.grid(column=0, row=2, padx=160, sticky=tk.W)
 
-    # imageRice = ImageTk.PhotoImage(file = "中式1.png")
     # image = imageRice
-    btnNum2 = tk.Button(FourthFrame, text='Rice', command=lambda: FoodCalories("中式"))
+    btnNum2 = tk.Button(frame, image = imageRice, command=lambda: FoodCalories("中式"))
     btnNum2.grid(column=1, row=2, sticky=tk.W)
 
-    # imageFastfood = ImageTk.PhotoImage(file = "速食1.png")
     # image = imageFastfood
-    btnNum3 = tk.Button(FourthFrame, text='Fastfood', command=lambda: FoodCalories("速食"))
+    btnNum3 = tk.Button(frame, image = imageFastfood, command=lambda: FoodCalories("速食"))
     btnNum3.grid(column=0, row=3, padx=160, pady=15, sticky=tk.W)
 
-    # imagePasta = ImageTk.PhotoImage(file = "義式1.png")
     # image = imagePasta
-    btnNum4 = tk.Button(FourthFrame, text='Pasta', command=lambda: FoodCalories("義式"))
+    btnNum4 = tk.Button(frame, image = imagePasta, command=lambda: FoodCalories("義式"))
     btnNum4.grid(column=1, row=3, pady=15, sticky=tk.W)
 
-    # imageNoodles = ImageTk.PhotoImage(file = "日式1.png")
     # image = imageNoodles
-    btnNum5 = tk.Button(FourthFrame, text='Japanese', command=lambda: FoodCalories("日式"))
+    btnNum5 = tk.Button(frame, image = imageNoodles, command=lambda: FoodCalories("日式"))
     btnNum5.grid(column=0, row=4, padx=160, pady=15, sticky=tk.W)
 
-    # imageFruits = ImageTk.PhotoImage(file = "水果1.png")
     # image = imageFruits
-    btnNum6 = tk.Button(FourthFrame, text='Fruits', command=lambda: FoodCalories("水果"))
+    btnNum6 = tk.Button(frame, image = imageFruits, command=lambda: FoodCalories("水果"))
     btnNum6.grid(column=1, row=4, pady=15, sticky=tk.W)
 
-    # imageCake = ImageTk.PhotoImage(file = "點心1.png")
     # image = imageCake
-    btnNum7 = tk.Button(FourthFrame, text='Cake', command=lambda: FoodCalories("甜點"))
+    btnNum7 = tk.Button(frame, image = imageCake, command=lambda: FoodCalories("甜點"))
     btnNum7.grid(column=0, row=5, padx=160, pady=15, sticky=tk.W)
 
-    # imageDrink = ImageTk.PhotoImage(file = "飲品1.png")
     # image = imageDrink
-    btnNum8 = tk.Button(FourthFrame, text='Drink', command=lambda: FoodCalories("飲料"))
+    btnNum8 = tk.Button(frame, image = imageDrink, command=lambda: FoodCalories("飲料"))
     btnNum8.grid(column=1, row=5, pady=15, sticky=tk.W)
 
 '''--------------------- 次頁面(FifthFrame)設定 ---------------------'''
@@ -530,13 +539,17 @@ def FoodCalories(FoodCategory):
     HomeButton = tk.Button(FifthFrame, text="⌂", command=lambda: SwitchFrame(FifthFrame, FirstFrame))
     HomeButton.grid(column=1, row=0, sticky='WS')
     
-    blankLabel = tk.Label(FifthFrame)
+    # 字體
+    f1 = tkFont.Font(size=40, family="Helvetica")
+    f2 = tkFont.Font(size=30, family="Helvetica")
+
+    blankLabel = tk.Label(FifthFrame, bg="#fbf1e9")
     blankLabel.grid(row = 0)
-    titlePic = tk.Label(FifthFrame, image=FoodImage[FoodCategory])
-    titlePic.grid(column = 0,row = 1, columnspan = 3, sticky = tk.E)
+    titlePic = tk.Label(FifthFrame, image=FoodImage[FoodCategory], bg="#fbf1e9")
+    titlePic.grid(column = 0,row = 1, sticky=tk.W+E)
     
-    titleText = tk.Label(FifthFrame, text=FoodCategory, font = 'f1', bg="#fbf1e9", fg='#f8872e')
-    titleText.grid(column = 3, row = 1, columnspan = 3, sticky = tk.SW)
+    titleText = tk.Label(FifthFrame, text=FoodCategory, font = f2, bg="#fbf1e9", fg='#f8872e')
+    titleText.grid(column = 0, row = 1, sticky=tk.E)
     
     file = FoodList[FoodCategory]
     dataframe = pd.read_excel(file)
@@ -549,7 +562,7 @@ def set_data_with_scrollbar(dataframe):
                      text=foodname+kcal+protein+fat+carbohydrate+sodium,
                      bg="#f8872e",
                      fg="white")
-    index.grid(column=0, row=2, columnspan=6, padx=7, sticky=tk.W+E)
+    index.grid(column=0, row=2, columnspan=6, padx=7, pady=7, sticky=tk.W+E)
     
     data = tk.Label(FifthFrame)
     sb = Scrollbar(data)
@@ -572,7 +585,6 @@ def set_data_with_scrollbar(dataframe):
     lb.pack(side=RIGHT)
     sb.config(command=lb.yview)
     data.grid(column=0, row=3, columnspan=6, padx=7, sticky=tk.NE + tk.SW)
-
 
 #＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝今天好想健＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝#
 '''-----------------------------宣告元件們-----------------------------'''
